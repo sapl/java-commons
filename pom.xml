@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>sapl</groupId>
-    <artifactId>common</artifactId>
+    <groupId>org.sapl</groupId>
+    <artifactId>java-commons</artifactId>
     <version>1.1</version>
 
 
@@ -28,7 +28,8 @@
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
         <github.global.server>github</github.global.server>
-        <github.maven-plugin>0.9</github.maven-plugin>
+        <github.maven-plugin>0.12</github.maven-plugin>
+
     </properties>
 
     <dependencies>
