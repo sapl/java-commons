@@ -1,19 +1,17 @@
 package org.sapl.commons.utils;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import okhttp3.*;
 import okio.Buffer;
 
-import javax.activation.MimeType;
-import javax.net.ssl.*;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.cert.CertificateException;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -112,7 +110,7 @@ public class BaseHttpClient {
 
     private Headers buildHeaders(Map<String, String> headers) {
         Headers.Builder builder = new Headers.Builder();
-        for (String name : headers.keySet()) {
+        if(headers!=null) for (String name : headers.keySet()) {
             builder.add(name, headers.get(name));
         }
         return builder.build();
@@ -148,6 +146,7 @@ public class BaseHttpClient {
         }
         return builder;
     }
+
 
 }
 
