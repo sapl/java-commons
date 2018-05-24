@@ -3,11 +3,12 @@
   <groupId>org.sapl</groupId>
   <artifactId>java-commons</artifactId>
   <versioning>
-    <release>1.1.2</release>
+    <release>1.1.3</release>
     <versions>
       <version>1.1</version>
       <version>1.1.2</version>
+      <version>1.1.3</version>
     </versions>
-    <lastUpdated>20180521080652</lastUpdated>
+    <lastUpdated>20180524054623</lastUpdated>
   </versioning>
 </metadata>
