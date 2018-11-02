@@ -11,21 +11,53 @@ import java.util.UUID;
 public class StringUtils {
 
 
+    public static String getPossibleMsisdn(String source) {
+        return getMsisdn(source, true);
+    }
+
     public static String getValidMsisdn(String source) {
+        return getMsisdn(source, false);
+    }
+
+    private static String getMsisdn(String source, boolean possible) {
+        source = removeNonDigits(source);
         if (source == null || source.length() == 0) return null;
-        source = source.trim().replaceAll("\\D+", "");
         PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
         try {
             Phonenumber.PhoneNumber number = phoneUtil.parse("+" + source, "");
-            if (phoneUtil.isValidNumber(number)) {
-                return source;
-            }
+
+            if (possible && phoneUtil.isPossibleNumber(number)) return source;
+
+            return phoneUtil.isValidNumber(number) ? source : null;
+
         } catch (Exception e) {
             //
         }
         return null;
     }
+
+    /**
+     * faster then regexp
+     */
+    public static String removeNonDigits(String text, char... accepted) {
+        if (text == null) return null;
+        int length = text.length();
+        StringBuffer buffer = new StringBuffer(length);
+        for (int i = 0; i < length; i++) {
+            char ch = text.charAt(i);
+            if (Character.isDigit(ch)) {
+                buffer.append(ch);
+            }
+            if (accepted != null && accepted.length > 0) {
+                for (char a : accepted) {
+                    if (a == ch) buffer.append(ch);
+                }
+            }
+        }
+        return buffer.toString();
+    }
+
 
     public static String generateHash() {
         return sh1(UUID.randomUUID().toString());
@@ -73,8 +105,6 @@ public class StringUtils {
         byte[] utf8 = dcipher.doFinal(dec);
         return new String(utf8, "UTF8");
     }
-
-
 
 
 }

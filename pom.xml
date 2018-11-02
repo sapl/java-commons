@@ -6,7 +6,7 @@
 
     <groupId>org.sapl</groupId>
     <artifactId>java-commons</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 
 
     <repositories>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>com.googlecode.libphonenumber</groupId>
             <artifactId>libphonenumber</artifactId>
-            <version>8.3.0</version>
+            <version>8.9.8</version>
         </dependency>
 
         <dependency>
