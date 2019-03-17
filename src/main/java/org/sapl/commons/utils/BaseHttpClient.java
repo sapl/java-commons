@@ -59,6 +59,19 @@ public class BaseHttpClient {
         return client.newCall(request).execute();
     }
 
+
+    public Response delete(String url, Map<String, String> headers) throws IOException {
+
+        Request request = new Request.Builder()
+                .url(url)
+                .headers(buildHeaders(headers))
+                .delete()
+                .build();
+
+
+        return client.newCall(request).execute();
+    }
+
     protected String encode(String s) throws UnsupportedEncodingException {
         return URLEncoder.encode(s, "UTF-8").replaceAll("\\+", "%20");
     }
